@@ -45,7 +45,7 @@ const services = [
     }
 ];
 
-const TimelineDot = ({ index }: { index: number }) => {
+const TimelineDot = ({ index: _index }: { index: number }) => {
     const dotRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: dotRef,

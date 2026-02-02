@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useCallback, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
 import './ScrollStack.css';
 
@@ -55,7 +55,7 @@ const ScrollStack = ({
         if (typeof value === 'string' && value.includes('%')) {
             return (parseFloat(value) / 100) * containerHeight;
         }
-        return parseFloat(value);
+        return typeof value === 'string' ? parseFloat(value) : value;
     }, []);
 
     const getScrollData = useCallback(() => {
