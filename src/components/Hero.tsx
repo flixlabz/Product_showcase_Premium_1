@@ -1,7 +1,20 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
+    // Generate static random positions for decorative elements
+    const plusPositions = useMemo(() => [...Array(6)].map(() => ({
+        x: Math.random() * 100 + "%",
+        y: Math.random() * 100 + "%",
+        duration: 10 + Math.random() * 10
+    })), []);
+
+    const dotPositions = useMemo(() => [...Array(8)].map(() => ({
+        x: Math.random() * 100 + "%",
+        y: Math.random() * 100 + "%",
+        duration: 5 + Math.random() * 5
+    })), []);
+
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -43,12 +56,12 @@ const Hero = () => {
 
                 {/* Floating Laboratory Elements */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    {[...Array(6)].map((_, i) => (
+                    {plusPositions.map((pos, i) => (
                         <motion.div
                             key={`plus-${i}`}
                             initial={{
-                                x: Math.random() * 100 + "%",
-                                y: Math.random() * 100 + "%",
+                                x: pos.x,
+                                y: pos.y,
                                 opacity: 0.1
                             }}
                             animate={{
@@ -57,7 +70,7 @@ const Hero = () => {
                                 rotate: [0, 90, 180, 270, 360]
                             }}
                             transition={{
-                                duration: 10 + Math.random() * 10,
+                                duration: pos.duration,
                                 repeat: Infinity,
                                 ease: "linear"
                             }}
@@ -66,12 +79,12 @@ const Hero = () => {
                             +
                         </motion.div>
                     ))}
-                    {[...Array(8)].map((_, i) => (
+                    {dotPositions.map((pos, i) => (
                         <motion.div
                             key={`dot-${i}`}
                             initial={{
-                                x: Math.random() * 100 + "%",
-                                y: Math.random() * 100 + "%",
+                                x: pos.x,
+                                y: pos.y,
                                 opacity: 0.1
                             }}
                             animate={{
@@ -79,7 +92,7 @@ const Hero = () => {
                                 opacity: [0.1, 0.3, 0.1]
                             }}
                             transition={{
-                                duration: 5 + Math.random() * 5,
+                                duration: pos.duration,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}

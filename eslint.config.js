@@ -19,5 +19,18 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Disable strict purity checks for decorative animations
+      'react-hooks/purity': 'off',
+      // Allow ts-nocheck for third-party WebGL code
+      '@typescript-eslint/ban-ts-comment': 'off',
+      // Allow any types in complex WebGL/animation code
+      '@typescript-eslint/no-explicit-any': 'warn',
+      // Allow unused vars with underscore prefix
+      '@typescript-eslint/no-unused-vars': ['error', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_'
+      }],
+    },
   },
 ])

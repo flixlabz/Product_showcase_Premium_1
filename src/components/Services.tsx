@@ -45,7 +45,7 @@ const services = [
     }
 ];
 
-const TimelineDot = ({ index: _index }: { index: number }) => {
+const TimelineDot = () => {
     const dotRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: dotRef,
@@ -117,7 +117,7 @@ const Services = () => {
                             return (
                                 <div key={service.title} className="relative flex items-center w-full">
                                     {/* Connection Dot with Trailing Effect */}
-                                    <TimelineDot index={index} />
+                                    <TimelineDot />
 
                                     {/* Card Container */}
                                     <div className={`flex w-full min-h-[300px] ${isLeft ? 'justify-start pr-8 md:pr-32 md:w-1/2' : 'justify-end pl-8 md:pl-32 md:w-1/2 md:ml-auto'}`}>
