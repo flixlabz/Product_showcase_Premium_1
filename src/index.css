@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0E27;
+  --foreground: #FFFFFF;
+  --primary: #FF6B35;
+  --secondary: #004E89;
+  --accent: #F7C548;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.1);
+  --muted: #E8E8E8;
+  --muted-foreground: rgba(255, 255, 255, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --selection: #FF6B35;
+  color-scheme: dark;
+}
+
+.light {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --primary: #FF6B35;
+  --secondary: #004E89;
+  --accent: #F59E0B;
+  --card: #FFFFFF;
+  --card-foreground: #1E293B;
+  --border: rgba(0, 0, 0, 0.1);
+  --muted: #64748B;
+  --muted-foreground: #94A3B8;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --selection: #FF6B35;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg);
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Transitions */
+.smooth-transition {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Gradients */
+.bg-mesh {
+  background-image:
+    radial-gradient(at 0% 0%, var(--background) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 0.2) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 0.2) 0, transparent 50%);
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  color: transparent !important;
+}
